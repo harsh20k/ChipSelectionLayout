@@ -49,12 +49,14 @@ fileprivate struct CustomChipLayout: Layout {
 	
 	func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
 		var origin = bounds.origin
+		var row: CGFloat = 1.0
 		
 		for subview in subviews {
 			let fitSize = subview.sizeThatFits(proposal)
 			
 			if origin.x + fitSize.width > bounds.maxX {
-				origin.x = bounds.minX
+				row += 1
+				origin.x = bounds.minX + 2 * row * spacing
 				origin.y += fitSize.height + spacing
 				
 				subview.place(at: origin, proposal: proposal)
@@ -85,7 +87,6 @@ fileprivate struct CustomChipLayout: Layout {
 				origin.y += fitSize.height
 			}
 		}
-		
 		return origin.y
 	}
 }
