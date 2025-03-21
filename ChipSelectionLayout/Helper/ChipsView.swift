@@ -88,8 +88,6 @@ fileprivate struct CustomChipLayout: Layout {
 			let totalRowWidth = (CGFloat(rowElements) * fitSize.width) + (CGFloat(rowElements - 1) * spacing)
 			let rowStartX = (bounds.width - totalRowWidth) / 2  // Center the row
 			
-			
-			
 			if elementsPlaced >= elementsInRow {
 				row += 1
 				elementsInRow = (row % 2 == 0) ? 3 : 2
